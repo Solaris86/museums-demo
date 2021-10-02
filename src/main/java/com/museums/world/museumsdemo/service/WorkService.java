@@ -4,11 +4,11 @@ import com.museums.world.museumsdemo.model.Work;
 
 public interface WorkService {
 
-    Work findWork(Integer id);
+    Work findWork(Integer workId);
 
-    Work saveWork(Work work);
+    Work saveWork(Integer museumId, Work work);
 
-    Work updateWork(Work work);
+    Work updateWork(Integer museumId, Integer workId, Work work);
 
-    void deleteWork(Work work);
+    void deleteWork(Integer id);
 }
