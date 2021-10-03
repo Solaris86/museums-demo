@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -33,12 +34,12 @@ public class MuseumController {
     }
 
     @PostMapping(path = "/museum", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Museum> saveMuseum(@RequestBody Museum museum) {
+    public ResponseEntity<Museum> saveMuseum(@RequestBody @Valid Museum museum) {
         return ResponseEntity.status(HttpStatus.CREATED).body(museumService.saveMuseum(museum));
     }
 
     @PutMapping(path = "/museum/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Museum> updateMuseum(@PathVariable Integer id, @RequestBody Museum museum) {
+    public ResponseEntity<Museum> updateMuseum(@PathVariable Integer id, @RequestBody @Valid Museum museum) {
         return ResponseEntity.ok(museumService.updateMuseum(id, museum));
     }
 

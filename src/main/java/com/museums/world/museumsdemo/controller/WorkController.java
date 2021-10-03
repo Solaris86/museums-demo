@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RestController
 @RequiredArgsConstructor
 public class WorkController {
@@ -25,12 +27,12 @@ public class WorkController {
     }
 
     @PostMapping(path = "/museum/{museumId}/work")
-    public ResponseEntity<Work> saveWork(@PathVariable Integer museumId, @RequestBody Work work) {
+    public ResponseEntity<Work> saveWork(@PathVariable Integer museumId, @RequestBody @Valid Work work) {
         return ResponseEntity.status(HttpStatus.CREATED).body(workService.saveWork(museumId, work));
     }
 
     @PutMapping(path = "/museum/{museumId}/work/{workId}")
-    public ResponseEntity<Work> updateWork(@PathVariable Integer museumId, @PathVariable Integer workId, @RequestBody Work work) {
+    public ResponseEntity<Work> updateWork(@PathVariable Integer museumId, @PathVariable Integer workId, @RequestBody @Valid Work work) {
         return ResponseEntity.ok(workService.updateWork(museumId, workId, work));
     }
 
