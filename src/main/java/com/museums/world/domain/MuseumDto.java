@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -31,6 +32,6 @@ public class MuseumDto {
     private String phone;
     private String founded;
 
-    @OneToMany(mappedBy = "museum", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "museum", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private List<WorkDto> works;
 }
